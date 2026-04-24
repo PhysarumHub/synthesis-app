@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model IdentificazioneCliente {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ragioneSociale String
+  piva           String
+
+  via    String
+  cap    String
+  citta  String
+
+  contattoEmail    String
+  contattoTelefono String?
+
+  respNome     String
+  respCognome  String
+  respEmail    String
+  respTelefono String?
+
+  manutNome     String
+  manutCognome  String
+  manutEmail    String
+  manutTelefono String?
+
+  dittaAzienda  String
+  dittaEmail    String
+  dittaTelefono String
+
+  tipoAttivita String
+  numUtenti    Int
+  numPersonale Int
+  tipoUtenti   String
+
+  repartiSpeciali          String
+  repartiSpecialiDettaglio String?
+}
+
+model IdentificazioneStruttura {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ragioneSociale String
+  piva           String
+  indirizzo      String?
+  citta          String?
+  telefono       String?
+  email          String?
+
+  tipologiaStruttura String
+  periodoEsercizio   String
+
+  valutazioneRischioLegionellosi String
+  dataValutazione                String?
+  noteValutazione                String?
+
+  pianoGestioneRischio String
+  notePianoGestione    String?
+
+  campionamentiLegionella String
+  noteCampionamenti       String?
+
+  registroIgiene String
+  noteRegistro   String?
+
+  pc1 Float?
+  pc2 Float?
+  pc3 Float?
+  pc4 Float?
+  pc5 Float?
+
+  tac1 Float?
+  tac2 Float?
+  tac3 Float?
+  tac4 Float?
+  tac5 Float?
+
+  taf1 Float?
+  taf2 Float?
+  taf3 Float?
+  taf4 Float?
+  taf5 Float?
+
+  cd1 Float?
+  cd2 Float?
+  cd3 Float?
+  cd4 Float?
+  cd5 Float?
+
+  diff1 String?
+  diff2 String?
+  diff3 String?
+  diff4 String?
+  diff5 String?
+
+  sistemaDisinfezione        String
+  noteDisinfezione           String?
+  schedaSicurezza            String?
+  noteSchedaSicurezza        String?
+  sistemaControlloAutomatico String?
+  noteControlloAutomatico    String?
+}
